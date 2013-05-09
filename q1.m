@@ -1,3 +1,7 @@
+% Jarno Alanko <..@..>
+% Jani Kettunen <..@..>
+% Sami J. Lehtinen <sjl@iki.fi> 44814P
+
 % Doing assignment B.
 
 [data, fT] = wavread('Q1_K2013_44814P.wav');
