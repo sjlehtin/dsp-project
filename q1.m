@@ -9,4 +9,4 @@ colorbar;
 
 printf("Sampling frequency: %d\n", fT);
 
-print('q1_spectrogram.pdf', '-dpdf');
+print('q1_spectrogram.png', '-dpng');
