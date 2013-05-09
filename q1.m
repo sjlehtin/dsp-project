@@ -38,14 +38,13 @@ display(sprintf('Implementing Chebyshev type II filter of order %d.\n', ...
 [B, A] = cheby2(filter_ord, Rs, Wc);
 [H, W] = freqz(B, A);
 
+xlabel('frequency in Hz');
+ylabel('magnitude');
 hold on;
 aH = abs(H);
 plot((W/pi)*(fT/2), 10*log(aH/max(aH)));
 
 print('q1_filter_specification.png', '-dpng');
-
-% XXX for some reason the filter specification seems to broken in the
-% high end of the passband.  Why is this so?
 
 filtered = filter(B, A, data);
 figure(3); clf;
@@ -68,4 +67,3 @@ soundsc(x_demod, fT);
 %% song lyrics.
 flipped = flipud(x_demod);
 soundsc(flipped, fT);
-

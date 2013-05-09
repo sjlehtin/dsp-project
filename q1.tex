@@ -1,5 +1,10 @@
-The spectrogram, depicted in figure \ref{fig:q1_spectrogram}, shows
-three distinct bands of signals: 0-5kHz, 5kHz-12.5kHz and 12.5kHz-22kHz.
+We used signal file {\tt Q1\_K2013\_44814P.wav} and chose to do
+assignment B, i.e., uncovering the embedded signal and performing the
+tasks as instructed in the signal. 
+
+The spectrogram of the original signal, as depicted in
+figure \ref{fig:q1_spectrogram}, shows three distinct bands of signals:
+0-5kHz, 5kHz-12.5kHz and 12.5kHz-22kHz.
 
 \begin{figure}
   \begin{center}
@@ -14,7 +19,9 @@ bands and maximum of 2 dB passband ripple.  The filter specification was
 drawn with {\tt speksitIIR}, obtained from the course page.  The filter
 specification is depicted in figure \ref{fig:q1_filter_specification}.
 
-XXX Chebyshev type II IIR filter.
+As the IIR filter, we chose Chebyshev type II, because of its good
+features for the task at hand, i.e., non-existent ripple in the
+passband.
 
 The filtered signal's spectrogram is shown in figure
 \ref{fig:q1_filtered_spectrogram}.
@@ -37,13 +44,21 @@ The filtered signal's spectrogram is shown in figure
   \end{center}  
 \end{figure}
 
-Demodulation was done as shown in Matlab round 5.  A nice frequency to
-perform the demodulation around was 11195 Hz.  The sample contains two
-assignments: the song lyrics of the sample played backwards and
-the calculation of ``8 * 6 * 6 * 2''.
+Demodulation was done as shown in Matlab round 5, with the following code
+\begin{verbatim}
+  x_demod = filtered .* cos(2*pi*fc/fT*[1:length(filtered)]');
+\end{verbatim}
 
-The calculation produces the result 576.  The song lyrics are part of a
-song ``Tuntematon potilas'' by Arttu Wiskari\cite{wiskari2010}.
+A nice frequency to perform the demodulation around, 11195 Hz, was found
+after a few tries.  This gave a clear signal to listen to.
+
+The sample contains two assignments: writing the song lyrics of the song
+that can be heard when the sample is played backwards and the
+calculation of ``8 * 6 * 6 * 2''.
+
+The calculation produces the result 576.  The song lyrics can be heard
+by using {\tt flipud}, and they are part of a song ``Tuntematon
+potilas'' by Arttu Wiskari\cite{wiskari2010}.
 
 \begin{quotation}
 eikö aikani täynnä jo ois
@@ -56,3 +71,5 @@ kuule mun toive
 
 mä haluan pois
 \end{quotation}
+
+Matlab code for the assignment is included in appendix \ref{sect:q1m}.
