@@ -1,0 +1,63 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[pdftex]{graphicx}
+\usepackage{color}
+\usepackage[pdftex,colorlinks=true,citecolor=black,
+            pagecolor=black,linkcolor=black,menucolor=black,
+            urlcolor=black]{hyperref}
+%\usepackage{eufrak}
+\usepackage{amsmath}
+\usepackage{amsbsy}
+\usepackage{eucal}
+\usepackage{subfigure}
+\usepackage{longtable}
+\usepackage{url}
+\urlstyle{same}
+\usepackage{verbatim} % For verbatiminput.
+
+\usepackage{amssymb}
+
+\usepackage{natbib}
+\usepackage{chngpage}
+
+\pdfinfo{            
+          /Title      (Project assignment for T-61.3015 Digital 
+          Signal Processing)
+          /Author     ()
+          /Keywords   ()          
+}
+
+\begin{document}
+
+\title{Project assignment \\
+T-61.3015 Digital Signal Processing}
+\author{Jarno Alanko \\
+  {\t ..@..} \\
+  Jani Kettunen \\
+  {\t ..@..} \\
+  Sami J. Lehtinen 44814P  \\ 
+       {\it sjl@iki.fi}}
+
+\maketitle             
+\thispagestyle{empty}
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{2}
+
+\section{Q1 Signal analysis and demodulation }
+\input{q1}
+
+\section{Q2 DTMF}
+\input{q2}
+
+\clearpage
+
+\addcontentsline{toc}{section}{\refname}  % article
+\bibliographystyle{plain}
+\bibliography{project_bibliography}
+
+\end{document}
