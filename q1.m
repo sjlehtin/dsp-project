@@ -14,6 +14,7 @@ figure(1); clf;
 %specgram(data, 1024, fT, 512, 256);
 spectrogram(data, 512, 256, 512, fT, 'yaxis');
 colorbar;
+title('Original sample')
 
 display(sprintf('Sampling frequency: %d\n', fT));
 
@@ -50,11 +51,13 @@ plot((W/pi)*(fT/2), 10*log(aH/max(aH)));
 
 print('q1_filter_specification.png', '-dpng');
 
+%%
 filtered = filter(B, A, data);
 figure(3); clf;
 %specgram(filtered, 1024, fT, 512, 256);
 spectrogram(filtered, 512, 256, 512, fT, 'yaxis');
 colorbar;
+title('Filtered sample')
 
 print('q1_filtered_spectrogram.png', '-dpng');
 
@@ -66,8 +69,41 @@ soundsc(filtered, fT);
 % frequency found by iterating a few times.
 fc = 11195;
 x_demod = filtered .* cos(2*pi*fc/fT*[1:length(filtered)]');
+
+figure(4); clf;
+spectrogram(x_demod, 512, 256, 512, fT, 'yaxis');
+colorbar;
+title('Demodulated sample')
+
+print('q1_demodulated_spectrogram.png', '-dpng');
+
+%%
 soundsc(x_demod, fT);
+%%
+
+fir_passband_end = 15000;
+fir_stopband_start = 15500;
+pass_ripple = 0.01;
+stop_ripple = 0.1;
+[lowpass_order, fo, mo, w] = firpmord([fir_passband_end, ...
+    fir_stopband_start], [1 0], [pass_ripple stop_ripple], fT);
+low_B = firpm(lowpass_order, fo, mo, w);
+
+display(sprintf('Implementing Parks-McClellan FIR filter of order %d.\n', ...
+		lowpass_order));
+
+demod_filtered = filter(low_B, 1, x_demod);
+
+figure(5); clf;
+spectrogram(demod_filtered, 512, 256, 512, fT, 'yaxis');
+colorbar;
+title('Demodulated sample after applying lowpass filter')
+
+print('q1_demodulated_filtered_spectrogram.png', '-dpng');
+
+%%
+soundsc(demod_filtered, fT);
 
 %% song lyrics.
-flipped = flipud(x_demod);
+flipped = flipud(demod_filtered);
 soundsc(flipped, fT);

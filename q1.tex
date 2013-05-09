@@ -21,7 +21,9 @@ specification is depicted in figure \ref{fig:q1_filter_specification}.
 
 As the IIR filter, we chose Chebyshev type II, because of its good
 features for the task at hand, i.e., non-existent ripple in the
-passband.
+passband.  Filter design was performed with {\tt cheb2ord} and {\tt
+cheby2}.  Final IIR filter order, i.e., maximum order for either
+numerator or the denominator of the transfer function, was 18.
 
 The filtered signal's spectrogram is shown in figure
 \ref{fig:q1_filtered_spectrogram}.
@@ -51,6 +53,34 @@ Demodulation was done as shown in Matlab round 5, with the following code
 
 A nice frequency to perform the demodulation around, 11195 Hz, was found
 after a few tries.  This gave a clear signal to listen to.
+
+As instructed, a low-pass FIR filter with a transition band of 500 Hz
+was applied to the sample.  There was little difference in the sound
+quality.  The chosen filter was Parks-McClellan optimal equiripple FIR,
+and the final order of the filter was 119.  The filter was designed with
+{\tt firpmord} and {\tt firpm}.  The demodulated signal's spectrogram is
+shown in figure \ref{fig:q1_demodulated_spectrogram}; the spectrogram
+after applying the FIR is shown in
+figure \ref{fig:q1_demodulated_filtered_spectrogram}.
+
+\begin{figure}
+  \begin{center}
+    \hspace*{-1in}
+    \includegraphics[width=180mm]{q1_demodulated_spectrogram}
+    \caption{Spectrogram of the demodulated signal. 
+    \label{fig:q1_demodulated_spectrogram}}
+  \end{center}  
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \hspace*{-1in}
+    \includegraphics[width=180mm]{q1_demodulated_filtered_spectrogram}
+    \caption{Spectrogram of the demodulated signal after applying the
+    lowpass filter. 
+      \label{fig:q1_demodulated_filtered_spectrogram}}
+  \end{center}  
+\end{figure}
 
 The sample contains two assignments: writing the song lyrics of the song
 that can be heard when the sample is played backwards and the
