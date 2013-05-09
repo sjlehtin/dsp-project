@@ -27,8 +27,6 @@ figure(2); clf;
 
 speksitIIR([Wp1, Wp2], [Ws1, Ws2], Rp, Rs, '', fT);
 
-print('q1_filter_specification.png', '-dpng');
-
 % chebyshev type II IIR filter.
 
 [filter_ord, Wc] = cheb2ord([Wp1, Wp2], [Ws1, Ws2], Rp, Rs);
@@ -40,6 +38,8 @@ display(sprintf('Implementing Chebyshev type II filter of order %d.\n', ...
 hold on;
 aH = abs(H);
 plot((W/pi)*(fT/2), 10*log(aH/max(aH)));
+
+print('q1_filter_specification.png', '-dpng');
 
 % XXX for some reason the filter specification seems to broken in the
 % high end of the passband.  Why is this so?
