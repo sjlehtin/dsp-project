@@ -36,7 +36,8 @@ printf('Implementing Chebyshev type II filter of order %d.\n', filter_ord);
 [H, W] = freqz(B, A);
 
 hold on;
-plot((W/pi)*(fT/2), 10*log(abs(H)));
+aH = abs(H);
+plot((W/pi)*(fT/2), 10*log(aH/max(aH)));
 
 % XXX for some reason the filter specification seems to broken in the
 % high end of the passband.  Why is this so?
