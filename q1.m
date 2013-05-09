@@ -1,6 +1,9 @@
 % Doing assignment B.
 
 [data, fT] = wavread('Q1_K2013_44814P.wav');
+soundsc(data, fT);
+
+%%
 % find out the frequency bands of the signal.
 % octave uses specgram.
 figure(1); clf;
@@ -45,10 +48,24 @@ print('q1_filter_specification.png', '-dpng');
 % high end of the passband.  Why is this so?
 
 filtered = filter(B, A, data);
-%soundsc(filtered, fT);
 figure(3); clf;
 %specgram(filtered, 1024, fT, 512, 256);
 spectrogram(filtered, 512, 256, 512, fT, 'yaxis');
 colorbar;
 
 print('q1_filtered_spectrogram.png', '-dpng');
+
+%%
+soundsc(filtered, fT);
+
+%% demodulation.  Idea taken from Matlab round 5.
+
+% frequency found by iterating a few times.
+fc = 11195;
+x_demod = filtered .* cos(2*pi*fc/fT*[1:length(filtered)]');
+soundsc(x_demod, fT);
+
+%% song lyrics.
+flipped = flipud(x_demod);
+soundsc(flipped, fT);
+
