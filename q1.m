@@ -28,3 +28,23 @@ speksitIIR([Wp1, Wp2], [Ws1, Ws2], Rp, Rs, '', fT);
 
 print('q1_filter_specification.png', '-dpng');
 
+% chebyshev type II IIR filter.
+
+[filter_ord, Wc] = cheb2ord([Wp1, Wp2], [Ws1, Ws2], Rp, Rs);
+printf('Implementing Chebyshev type II filter of order %d.\n', filter_ord);
+[B, A] = cheby2(filter_ord, Rs, Wc);
+[H, W] = freqz(B, A);
+
+hold on;
+plot((W/pi)*(fT/2), 10*log(abs(H)));
+
+% XXX for some reason the filter specification seems to broken in the
+% high end of the passband.  Why is this so?
+
+filtered = filter(B, A, data);
+%soundsc(filtered, fT);
+figure(3); clf;
+specgram(filtered, 1024, fT, 512, 256);
+colorbar;
+
+print('q1_filtered_spectrogram.png', '-dpng');
