@@ -5,6 +5,7 @@
 % Doing assignment B.
 
 [data, fT] = wavread('Q1_K2013_44814P.wav');
+%%
 soundsc(data, fT);
 
 %%
@@ -47,9 +48,9 @@ xlabel('frequency in Hz');
 ylabel('magnitude');
 hold on;
 aH = abs(H);
-plot((W/pi)*(fT/2), 10*log(aH/max(aH)));
+plot((W/pi)*(fT/2), 20*log10(aH/max(aH)));
 
-print('q1_filter_specification.png', '-dpng');
+print('q1_iir_filter_specification.png', '-dpng');
 
 %%
 filtered = filter(B, A, data);
@@ -85,16 +86,31 @@ fir_passband_end = 15000;
 fir_stopband_start = 15500;
 pass_ripple = 0.01;
 stop_ripple = 0.1;
+
+figure(5); clf;
+
+speksitFIR([fir_passband_end, ...
+    fir_stopband_start], [1 0], [pass_ripple stop_ripple], fT);
+
 [lowpass_order, fo, mo, w] = firpmord([fir_passband_end, ...
     fir_stopband_start], [1 0], [pass_ripple stop_ripple], fT);
 low_B = firpm(lowpass_order, fo, mo, w);
+
+[H, W] = freqz(low_B, 1);
+xlabel('frequency in Hz');
+ylabel('magnitude');
+hold on;
+aH = abs(H);
+plot((W/pi)*(fT/2), aH/max(aH));
+
+print('q1_fir_filter_specification.png', '-dpng');
 
 display(sprintf('Implementing Parks-McClellan FIR filter of order %d.\n', ...
 		lowpass_order));
 
 demod_filtered = filter(low_B, 1, x_demod);
 
-figure(5); clf;
+figure(6); clf;
 spectrogram(demod_filtered, 512, 256, 512, fT, 'yaxis');
 colorbar;
 title('Demodulated sample after applying lowpass filter')
