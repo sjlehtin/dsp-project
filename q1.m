@@ -1,6 +1,6 @@
-% Jarno Alanko <..@..>
-% Jani Kettunen <..@..>
-% Sami J. Lehtinen <sjl@iki.fi> 44814P
+% Jarno Alanko <jarno.alanko@aalto.fi>
+% Jani Kettunen <tsiki@cc.hut.fi>
+% Sami J. Lehtinen <sjl@iki.fi>
 
 % Doing assignment B.
 

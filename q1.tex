@@ -1,15 +1,12 @@
-We used signal file {\tt Q1\_K2013\_44814P.wav} and chose to do
+We chose to do
 assignment B, i.e., uncovering the embedded signal and performing the
-tasks as instructed in the signal. 
+tasks as instructed in the signal.
+We used signal file {\tt Q1\_K2013\_44814P.wav}. The spectrogram of the original signal, as depicted in figure \ref{fig:q1_spectrogram}, shows three distinct bands of signals: 0-5kHz, 5kHz-12.5kHz and 12.5kHz-22kHz.
 
-The spectrogram of the original signal, as depicted in
-figure \ref{fig:q1_spectrogram}, shows three distinct bands of signals:
-0-5kHz, 5kHz-12.5kHz and 12.5kHz-22kHz.
-
-\begin{figure}
+\begin{figure}[h!]
   \begin{center}
     \hspace*{-1in}
-    \includegraphics[width=180mm]{q1_spectrogram}
+    \includegraphics[width=100mm]{q1_spectrogram}
     \caption{Spectrogram of the signal. \label{fig:q1_spectrogram}}
   \end{center}  
 \end{figure}
@@ -28,24 +25,6 @@ numerator or the denominator of the transfer function, was 18.
 
 The filtered signal's spectrogram is shown in figure
 \ref{fig:q1_filtered_spectrogram}.
-
-\begin{figure}
-  \begin{center}
-    \hspace*{-1in}
-    \includegraphics[width=180mm]{q1_iir_filter_specification}
-    \caption{IIR filter specification for the
-      bandpass filter. \label{fig:q1_iir_filter_specification}}
-  \end{center}  
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \hspace*{-1in}
-    \includegraphics[width=180mm]{q1_filtered_spectrogram}
-    \caption{Spectrogram of the filtered signal. 
-      \label{fig:q1_filtered_spectrogram}}
-  \end{center}  
-\end{figure}
 
 Demodulation was done as shown in Matlab round 5, with the following code
 \begin{verbatim}
@@ -69,34 +48,6 @@ figure \ref{fig:q1_demodulated_spectrogram}; the spectrogram after
 applying the FIR is shown in
 figure \ref{fig:q1_demodulated_filtered_spectrogram}.
 
-\begin{figure}
-  \begin{center}
-    \hspace*{-1in}
-    \includegraphics[width=180mm]{q1_demodulated_spectrogram}
-    \caption{Spectrogram of the demodulated signal. 
-    \label{fig:q1_demodulated_spectrogram}}
-  \end{center}  
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \hspace*{-1in}
-    \includegraphics[width=180mm]{q1_fir_filter_specification}
-    \caption{FIR filter specification and amplitude response for the
-    lowpass filter. \label{fig:q1_fir_filter_specification}}
-  \end{center}  
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \hspace*{-1in}
-    \includegraphics[width=180mm]{q1_demodulated_filtered_spectrogram}
-    \caption{Spectrogram of the demodulated signal after applying the
-    lowpass filter. 
-      \label{fig:q1_demodulated_filtered_spectrogram}}
-  \end{center}  
-\end{figure}
-
 The sample contains two assignments: writing the song lyrics of the song
 that can be heard when the sample is played backwards and the
 calculation of ``8 * 6 * 6 * 2''.
@@ -118,3 +69,54 @@ mä haluan pois
 \end{quotation}
 
 Matlab code for the assignment is included in appendix \ref{sect:q1m}.
+
+
+\begin{figure}[]
+  \begin{center}
+    \hspace*{-1in}
+    \includegraphics[width=100mm]{q1_iir_filter_specification}
+    \caption{IIR filter specification for the
+      bandpass filter. \label{fig:q1_iir_filter_specification}}
+  \end{center}  
+\end{figure}
+
+
+\begin{figure}[]
+  \begin{center}
+    \hspace*{-1in}
+    \includegraphics[width=100mm]{q1_filtered_spectrogram}
+    \caption{Spectrogram of the filtered signal. 
+      \label{fig:q1_filtered_spectrogram}}
+  \end{center}  
+\end{figure}
+
+
+\begin{figure}[]
+  \begin{center}
+    \hspace*{-1in}
+    \includegraphics[width=100mm]{q1_demodulated_spectrogram}
+    \caption{Spectrogram of the demodulated signal. 
+    \label{fig:q1_demodulated_spectrogram}}
+  \end{center}  
+\end{figure}
+
+\begin{figure}[]
+  \begin{center}
+    \hspace*{-1in}
+    \includegraphics[width=100mm]{q1_fir_filter_specification}
+    \caption{FIR filter specification and amplitude response for the
+    lowpass filter. \label{fig:q1_fir_filter_specification}}
+  \end{center}  
+\end{figure}
+
+\begin{figure}[]
+  \begin{center}
+    \hspace*{-1in}
+    \includegraphics[width=100mm]{q1_demodulated_filtered_spectrogram}
+    \caption{Spectrogram of the demodulated signal after applying the
+    lowpass filter. 
+      \label{fig:q1_demodulated_filtered_spectrogram}}
+  \end{center}  
+\end{figure}
+
+\newpage
